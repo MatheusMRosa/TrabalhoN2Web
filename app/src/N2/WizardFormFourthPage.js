@@ -20,32 +20,35 @@ const WizardFormFourthPage = props => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <h3>Dados Pessoais</h3>
-                <div>Nome: {fistName}</div>
-                <div>Email: {email}</div>
-                <div>Telefone: {phone}</div>
-            </div>
-            <div>
-                <h3>Endereço</h3>
-                <div>Logradouro : {log}</div>
-                <div>CEP: {cep}</div>
-                <div>cidade: {city}</div>
-                <div>estado: {estado}</div>
-            </div>
-            <div>
-                <h3>Empresas </h3>
-                {members.map((member, index) => (
-                    <div key={index}>
-                        <div>Nome da Empresa {member.name}</div>
-                        <div>Contato: {member.contact}</div>
-                    </div>
-                ))}
-            </div>
-            <div>
-                <button type="button" className="previous" onClick={previousPage}>
-                    Anterior
-                </button>
-                <button type="submit" disabled={pristine || submitting}>Salvar</button>
+                <h1>Revisar os Dados</h1>
+                <div>
+                    <h3>Dados Pessoais</h3>
+                    <div>Nome: {fistName}</div>
+                    <div>Email: {email}</div>
+                    <div>Telefone: {phone}</div>
+                </div>
+                <div>
+                    <h3>Endereço</h3>
+                    <div>Logradouro : {log}</div>
+                    <div>CEP: {cep}</div>
+                    <div>Cidade: {city}</div>
+                    <div>Estado: {estado}</div>
+                </div>
+                <div>
+                    <h3>Empresas </h3>
+                    {members.map((member, index) => (
+                        <div key={index}>
+                            <div>Nome da Empresa {member.name}</div>
+                            <div>Contato: {member.contact}</div>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <button type="button" className="previous" onClick={previousPage}>
+                        Anterior
+                    </button>
+                    <button type="submit" disabled={pristine || submitting}>Salvar</button>
+                </div>
             </div>
         </form>
     )
