@@ -6,9 +6,12 @@ import validate from './validate'
 const selector = formValueSelector('wizard');
 
 const WizardFormFourthPage = props => {
-    const {handleSubmit, pristine, previousPage, submitting, lastName} = props;
+    const {handleSubmit, pristine, previousPage, submitting, fistName} = props;
     return (
         <form onSubmit={handleSubmit}>
+            {fistName &&
+            <div>Nome: {fistName}</div>
+            }
             <div>
                 <button type="button" className="previous" onClick={previousPage}>
                     Previous
@@ -20,9 +23,9 @@ const WizardFormFourthPage = props => {
 };
 
 const mapStateToProps = state => {
-    const lastName = selector(state, 'firstName');
+    const fistName = selector(state, 'firstName');
     return ({
-        lastName
+        fistName
     });
 };
 
