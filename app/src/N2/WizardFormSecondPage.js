@@ -9,7 +9,8 @@ const WizardFormSecondPage = props => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Address</label>
+                <h3>Endereço</h3>
+                <br/>
                 <div>
                     <Field
                         name="Logradouro"
@@ -39,9 +40,9 @@ const WizardFormSecondPage = props => {
             </div>
             <div>
                 <button type="button" className="previous" onClick={previousPage}>
-                    Previous
+                    Anterior
                 </button>
-                <button type="submit" className="next">Next</button>
+                <button type="submit" className="next">Próximo</button>
             </div>
         </form>
     )

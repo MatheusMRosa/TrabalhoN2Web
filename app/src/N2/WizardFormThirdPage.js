@@ -21,7 +21,7 @@ const renderMembers = ({fields, meta: {error, submitFailed}}) => (
                     name={`${member}.name`}
                     type="text"
                     component={renderField}
-                    label="Nome"
+                    label="Nome da Empresa"
                 />
                 <Field
                     name={`${member}.contact`}
@@ -42,9 +42,9 @@ const WizardFormThirdPage = props => {
             <FieldArray name="members" component={renderMembers}/>
             <div>
                 <button type="button" className="previous" onClick={previousPage}>
-                    Previous
+                    Anterior
                 </button>
-                <button type="submit" className="next">Next</button>
+                <button type="submit" className="next">Próximo</button>
             </div>
         </form>
     )

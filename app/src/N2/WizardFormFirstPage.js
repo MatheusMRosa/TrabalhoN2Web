@@ -21,7 +21,7 @@ const WizardFormFirstPage = props => {
                 label="Telefone"
             />
             <div>
-                <button type="submit" className="next">Next</button>
+                <button type="submit" className="next">Próximo</button>
             </div>
         </form>
     )
