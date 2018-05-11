@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <WizardForm onSubmit={() => {console.log("Algo")}}/>
+          <WizardForm onSubmit={(values) => {console.log("Salvou: ",values)}}/>
       </div>
     );
   }

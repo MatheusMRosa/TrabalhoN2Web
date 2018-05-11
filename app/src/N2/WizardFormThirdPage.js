@@ -1,52 +1,55 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, FieldArray, reduxForm} from 'redux-form'
 import validate from './validate'
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+import renderField from "./renderField";
 
-const renderColorSelector = ({input, meta: {touched, error}}) => (
+const renderMembers = ({fields, meta: {error, submitFailed}}) => (
     <div>
-        <select {...input}>
-            <option value="">Select a color...</option>
-            {colors.map(val => <option value={val} key={val}>{val}</option>)}
-        </select>
-        {touched && error && <span>{error}</span>}
+        <div>
+            <button type="button" onClick={() => fields.push({})}>Adicionar Empregos</button>
+            {submitFailed && error && <span>{error}</span>}
+        </div>
+        {fields.map((member, index) => (
+            <div key={index}>
+                <button
+                    type="button"
+                    title="Remove Member"
+                    onClick={() => fields.remove(index)}>Remover
+                </button>
+                <h4>Emprego nº {index + 1}</h4>
+                <Field
+                    name={`${member}.name`}
+                    type="text"
+                    component={renderField}
+                    label="Nome"
+                />
+                <Field
+                    name={`${member}.contact`}
+                    type="text"
+                    component={renderField}
+                    label="contato"
+                />
+            </div>
+        ))}
     </div>
 );
 
 const WizardFormThirdPage = props => {
-    const {handleSubmit, pristine, previousPage, submitting} = props;
+    const {handleSubmit, previousPage} = props;
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Favorite Color</label>
-                <Field name="favoriteColor" component={renderColorSelector} />
-            </div>
-            <div>
-                <label htmlFor="employed">Employed</label>
-                <div>
-                    <Field
-                        name="employed"
-                        id="employed"
-                        component="input"
-                        type="checkbox"
-                    />
-                </div>
-            </div>
-            <div>
-                <label>Notes</label>
-                <div>
-                    <Field name="notes" component="textarea" placeholder="Notes" />
-                </div>
-            </div>
+            <div>Empregos anteriores</div>
+            <FieldArray name="members" component={renderMembers}/>
             <div>
                 <button type="button" className="previous" onClick={previousPage}>
                     Previous
                 </button>
-                <button type="submit" disabled={pristine || submitting}>Submit</button>
+                <button type="submit" className="next">Next</button>
             </div>
         </form>
     )
 };
+
 export default reduxForm({
     form: 'wizard',
     destroyOnUnmount: false,

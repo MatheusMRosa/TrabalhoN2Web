@@ -11,13 +11,14 @@ const WizardFormFirstPage = props => {
                 name="firstName"
                 type="text"
                 component={renderField}
-                label="First Name"
+                label="Nome"
             />
+            <Field name="email" type="email" component={renderField} label="Email" />
             <Field
-                name="lastName"
+                name="phone"
                 type="text"
                 component={renderField}
-                label="Last Name"
+                label="Telefone"
             />
             <div>
                 <button type="submit" className="next">Next</button>

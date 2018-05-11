@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
+import WizardFormFourthPage from './WizardFormFourthPage';
 import {previousPage, nextPage} from './actions';
 import {connect} from "react-redux";
 
@@ -29,18 +30,27 @@ class WizardForm extends Component {
         // const {page} = this.state;
         return (
             <div>
-                {console.log("Estou aqui")}
-                {this.props.page === 1 && <WizardFormFirstPage onSubmit={this.props.nextPage}/>}
+                {this.props.page === 1 &&
+                <WizardFormFirstPage onSubmit={this.props.nextPage}/>
+                }
                 {this.props.page === 2 &&
                 <WizardFormSecondPage
                     previousPage={this.props.previousPage}
                     onSubmit={this.props.nextPage}
-                />}
+                />
+                }
                 {this.props.page === 3 &&
                 <WizardFormThirdPage
                     previousPage={this.props.previousPage}
+                    onSubmit={this.props.nextPage}
+                />
+                }
+                {this.props.page === 4 &&
+                <WizardFormFourthPage
+                    previousPage={this.props.previousPage}
                     onSubmit={onSubmit}
-                />}
+                />
+                }
             </div>
         )
     }

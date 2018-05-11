@@ -1,30 +1,40 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import validate from './validate'
-import renderField from './renderField'
+import renderField from "./renderField";
 
-const renderError = ({meta: {touched, error}}) =>
-    touched && error ? <span>{error}</span> : false;
 
 const WizardFormSecondPage = props => {
     const {handleSubmit, previousPage} = props;
     return (
         <form onSubmit={handleSubmit}>
-            <Field name="email" type="email" component={renderField} label="Email" />
             <div>
-                <label>Sex</label>
+                <label>Address</label>
                 <div>
-                    <label>
-                        <Field name="sex" component="input" type="radio" value="male" />
-                        {' '}
-                        Male
-                    </label>
-                    <label>
-                        <Field name="sex" component="input" type="radio" value="female" />
-                        {' '}
-                        Female
-                    </label>
-                    <Field name="sex" component={renderError} />
+                    <Field
+                        name="Logradouro"
+                        type="text"
+                        component={renderField}
+                        label="Logradouro"
+                    />
+                    <Field
+                        name="CEP"
+                        type="text"
+                        component={renderField}
+                        label="CEP"
+                    />
+                    <Field
+                        name="city"
+                        type="text"
+                        component={renderField}
+                        label="Cidade"
+                    />
+                    <Field
+                        name="estado"
+                        type="text"
+                        component={renderField}
+                        label="Estado"
+                    />
                 </div>
             </div>
             <div>
