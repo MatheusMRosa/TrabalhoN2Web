@@ -36,12 +36,16 @@ const WizardFormFourthPage = props => {
                 </div>
                 <div>
                     <h3>Empresas </h3>
-                    {members.map((member, index) => (
-                        <div key={index}>
-                            <div>Nome da Empresa {member.name}</div>
-                            <div>Contato: {member.contact}</div>
-                        </div>
-                    ))}
+                    {members ?
+                        members.map((member, index) => (
+                            <div key={index}>
+                                <div>Nome da Empresa {member.name}</div>
+                                <div>Contato: {member.contact}</div>
+                            </div>
+                        ))
+                        :
+                        null
+                    }
                 </div>
                 <div>
                     <button type="button" className="previous" onClick={previousPage}>
